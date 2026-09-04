@@ -1,1 +1,102 @@
-<p>detalhes-item works!</p>
+@if (item) {
+
+  <section class="detalhes">
+
+    <div class="imagem">
+      <img
+        [src]="item.imagem"
+        [alt]="item.nome"
+      >
+    </div>
+
+    <div class="informacoes">
+
+      <a
+        routerLink="/catalogo"
+        class="voltar"
+      >
+        ← Voltar ao catálogo
+      </a>
+
+      <p class="categoria">
+        {{ item.categoria }}
+      </p>
+
+      <h1>
+        {{ item.nome }}
+      </h1>
+
+      <p class="descricao">
+        {{ item.descricao }}
+      </p>
+
+      <div class="disponibilidade">
+
+        <strong>Status:</strong>
+
+        @if (item.status === 'DISPONIVEL') {
+          <span class="disponivel">
+            Disponível
+          </span>
+        }
+
+        @if (item.status === 'RESERVADO') {
+          <span class="indisponivel">
+            Reservado
+          </span>
+        }
+
+        @if (item.status === 'EMPRESTADO') {
+          <span class="indisponivel">
+            Emprestado
+          </span>
+        }
+
+        @if (item.status === 'MANUTENCAO') {
+          <span class="indisponivel">
+            Em manutenção
+          </span>
+        }
+
+      </div>
+
+      <div class="acoes">
+
+        @if (item.status === 'DISPONIVEL') {
+
+            <button class="botao-principal"
+            (click)="adicionarSolicitacao()"
+            >Adicionar à solicitação
+            </button>
+
+        } @else {
+
+          <button class="botao-secundario">
+            Quero ser avisado quando estiver disponível
+          </button>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+} @else {
+
+  <section class="nao-encontrado">
+
+    <h1>Item não encontrado</h1>
+
+    <p>
+      O item solicitado não existe ou não está mais disponível.
+    </p>
+
+    <a routerLink="/catalogo">
+      Voltar ao catálogo
+    </a>
+
+  </section>
+
+}

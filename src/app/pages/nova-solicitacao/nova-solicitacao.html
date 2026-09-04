@@ -1,0 +1,71 @@
+<section class="solicitacao">
+
+  <h1>Nova solicitação</h1>
+
+  @if (itens.length === 0) {
+
+    <p>
+      Nenhum item foi adicionado à solicitação.
+    </p>
+
+  } @else {
+
+    <div class="lista-itens">
+
+      @for (item of itens; track item.id) {
+
+        <div class="item">
+
+          <img
+            [src]="item.imagem"
+            [alt]="item.nome"
+          >
+
+          <div>
+            <h2>{{ item.nome }}</h2>
+
+            <p>
+              {{ item.categoria }}
+            </p>
+          </div>
+
+          <button
+            (click)="removerItem(item.id)"
+          >
+            Remover
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+    <div class="formulario">
+
+      <label>
+        Finalidade da solicitação
+      </label>
+
+      <textarea
+        placeholder="Informe para qual atividade os itens serão utilizados">
+      </textarea>
+
+      <label>
+        Professor responsável
+      </label>
+
+      <input
+        type="text"
+        placeholder="Pesquisar professor"
+      >
+
+      <button class="enviar">
+        Enviar solicitação
+      </button>
+
+    </div>
+
+  }
+
+</section>

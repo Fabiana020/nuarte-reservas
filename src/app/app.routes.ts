@@ -5,6 +5,7 @@ import { Catalogo } from './pages/catalogo/catalogo';
 import { DetalhesItem } from './pages/detalhes-item/detalhes-item';
 import { MinhasSolicitacoes } from './pages/minhas-solicitacoes/minhas-solicitacoes';
 import { Perfil } from './pages/perfil/perfil';
+import { NovaSolicitacao } from './pages/nova-solicitacao/nova-solicitacao';
 
 export const routes: Routes = [
   {
@@ -35,5 +36,9 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'catalogo'
-  }
+  },
+  {
+    path: 'solicitacao/nova',
+    component: NovaSolicitacao
+},
 ];

@@ -1,0 +1,88 @@
+.solicitacao {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+.lista-itens {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  margin-bottom: 40px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 15px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.item img {
+  width: 90px;
+  height: 90px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+}
+
+.item div {
+  flex: 1;
+}
+
+.item h2 {
+  margin: 0 0 5px;
+}
+
+.item p {
+  margin: 0;
+
+  color: #666;
+}
+
+.item button {
+  padding: 8px 15px;
+
+  cursor: pointer;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+textarea,
+input {
+  padding: 12px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  font-size: 15px;
+}
+
+.enviar {
+  margin-top: 10px;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #222;
+  color: white;
+
+  cursor: pointer;
+}
