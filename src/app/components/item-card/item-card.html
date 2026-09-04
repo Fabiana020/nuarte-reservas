@@ -1,0 +1,30 @@
+<a
+  class="card"
+  [routerLink]="['/item', item.id]"
+>
+
+  <img
+    [src]="item.imagem"
+    [alt]="item.nome"
+  >
+
+  <div class="informacoes">
+
+    <p class="categoria">
+      {{ item.categoria }}
+    </p>
+
+    <h2>
+      {{ item.nome }}
+    </h2>
+
+    <span
+      class="status"
+      [class.disponivel]="item.status === 'DISPONIVEL'"
+    >
+      {{ item.status }}
+    </span>
+
+  </div>
+
+</a>

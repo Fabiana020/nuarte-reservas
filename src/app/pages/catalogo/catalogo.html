@@ -1,0 +1,23 @@
+<section class="catalogo">
+
+  <div class="topo">
+    <h1>Catálogo</h1>
+
+    <p>
+      Consulte os figurinos, acessórios e materiais disponíveis no NUARTE.
+    </p>
+  </div>
+
+  <div class="grid">
+
+    @for (item of itens; track item.id) {
+
+      <app-item-card
+        [item]="item">
+      </app-item-card>
+
+    }
+
+  </div>
+
+</section>

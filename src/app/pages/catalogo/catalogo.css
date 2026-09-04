@@ -1,0 +1,24 @@
+.catalogo {
+  padding: 40px;
+}
+
+.topo {
+  margin-bottom: 30px;
+}
+
+.topo h1 {
+  margin-bottom: 5px;
+}
+
+.topo p {
+  color: #666;
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(220px, 1fr));
+
+  gap: 25px;
+}
