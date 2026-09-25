@@ -31,3 +31,23 @@
 .observacao p {
   margin: 6px 0 0;
 }
+
+.aprovada {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.negada-nuarte {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.emprestada {
+  background: #e2e3e5;
+  color: #41464b;
+}
+
+.finalizada {
+  background: #d1e7dd;
+  color: #0f5132;
+}

@@ -1,0 +1,101 @@
+.solicitacoes-nuarte {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.topo {
+  margin-bottom: 30px;
+}
+
+.topo h1 {
+  margin-bottom: 8px;
+}
+
+.topo p {
+  margin: 0;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.solicitacao-card {
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.numero {
+  font-size: 14px;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #cff4fc;
+  color: #055160;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.itens {
+  margin-top: 20px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+.item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item p {
+  margin: 4px 0 0;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.acoes button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.aprovar {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.negar {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.vazio {
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}

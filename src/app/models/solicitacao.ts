@@ -9,8 +9,14 @@ export interface Solicitacao {
   status:
     | 'AGUARDANDO_PROFESSOR'
     | 'INDEFERIDA_PROFESSOR'
-    | 'AGUARDANDO_NUARTE';
+    | 'AGUARDANDO_NUARTE'
+    | 'NEGADA_NUARTE'
+    | 'APROVADA'
+    | 'EMPRESTADA'
+    | 'FINALIZADA';
 
   dataSolicitacao: Date;
+
   observacaoProfessor?: string;
+  observacaoNuarte?: string;
 }

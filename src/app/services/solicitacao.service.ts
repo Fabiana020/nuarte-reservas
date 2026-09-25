@@ -127,4 +127,58 @@ export class SolicitacaoService {
       this.salvarSolicitacoes();
     }
   }
+
+  aprovarSolicitacaoNuarte(id: number): void {
+    const solicitacao = this.solicitacoes.find(
+      solicitacao => solicitacao.id === id
+    );
+    
+    if (solicitacao) {
+      solicitacao.status = 'APROVADA';
+      
+      this.salvarSolicitacoes();
+    }
+  }
+
+  negarSolicitacaoNuarte(
+    id: number,
+    observacao: string
+  ): void {
+    
+    const solicitacao = this.solicitacoes.find(
+      solicitacao => solicitacao.id === id
+    );
+    
+    if (solicitacao) {
+      solicitacao.status = 'NEGADA_NUARTE';
+      solicitacao.observacaoNuarte = observacao;
+
+      this.salvarSolicitacoes();
+    }
+  }
+
+  marcarComoEmprestada(id: number): void {
+
+  const solicitacao = this.solicitacoes.find(
+    solicitacao => solicitacao.id === id
+  );
+
+  if (solicitacao) {
+    solicitacao.status = 'EMPRESTADA';
+    this.salvarSolicitacoes();
+  }
+}
+
+finalizarSolicitacao(id: number): void {
+
+  const solicitacao = this.solicitacoes.find(
+    solicitacao => solicitacao.id === id
+  );
+
+  if (solicitacao) {
+    solicitacao.status = 'FINALIZADA';
+    this.salvarSolicitacoes();
+  }
+}
+
 }

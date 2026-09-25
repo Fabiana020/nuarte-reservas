@@ -1,0 +1,130 @@
+<section class="emprestimos">
+
+  <h1>Empréstimos</h1>
+
+  <h2>Aguardando retirada</h2>
+
+  @if (aprovadas.length === 0) {
+
+    <p>
+      Nenhuma solicitação está aguardando retirada.
+    </p>
+
+  } @else {
+
+    @for (
+      solicitacao of aprovadas;
+      track solicitacao.id
+    ) {
+
+      <article class="card">
+
+        <h3>
+          {{ solicitacao.finalidade }}
+        </h3>
+
+        <p>
+          <strong>Professor:</strong>
+          {{ solicitacao.professor }}
+        </p>
+
+        <strong>Itens:</strong>
+
+        @for (
+          item of solicitacao.itens;
+          track item.id
+        ) {
+
+          <p>
+            {{ item.nome }}
+          </p>
+
+        }
+
+        <button
+          (click)="registrarRetirada(solicitacao)"
+        >
+          Registrar retirada
+        </button>
+
+      </article>
+
+    }
+
+  }
+
+
+  <h2>Empréstimos ativos</h2>
+
+  @if (emprestimos.length === 0) {
+
+    <p>
+      Nenhum empréstimo registrado.
+    </p>
+
+  } @else {
+
+    @for (
+      emprestimo of emprestimos;
+      track emprestimo.id
+    ) {
+
+      <article class="card">
+
+        <h3>
+          Empréstimo
+        </h3>
+
+        @for (
+          registro of emprestimo.itens;
+          track registro.item.id
+        ) {
+
+          <div class="item-emprestado">
+
+            <div>
+
+              <strong>
+                {{ registro.item.nome }}
+              </strong>
+
+              @if (registro.devolvido) {
+
+                <p>
+                  Devolvido
+                </p>
+
+              } @else {
+
+                <p>
+                  Emprestado
+                </p>
+
+              }
+
+            </div>
+
+            @if (!registro.devolvido) {
+
+              <button
+                (click)="devolverItem(
+                  emprestimo.id,
+                  registro.item.id
+                )"
+              >
+                Registrar devolução
+              </button>
+
+            }
+
+          </div>
+
+        }
+
+      </article>
+
+    }
+
+  }
+
+</section>

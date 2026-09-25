@@ -38,6 +38,10 @@
             [class.aguardando-professor]="solicitacao.status === 'AGUARDANDO_PROFESSOR'"
             [class.aguardando-nuarte]="solicitacao.status === 'AGUARDANDO_NUARTE'"
             [class.indeferida]="solicitacao.status === 'INDEFERIDA_PROFESSOR'"
+            [class.aprovada]="solicitacao.status === 'APROVADA'"
+            [class.negada-nuarte]="solicitacao.status === 'NEGADA_NUARTE'"
+            [class.emprestada]="solicitacao.status === 'EMPRESTADA'"
+            [class.finalizada]="solicitacao.status === 'FINALIZADA'"
             >
             @if (solicitacao.status === 'AGUARDANDO_PROFESSOR') {
                 Aguardando professor
@@ -49,6 +53,21 @@
             
             @if (solicitacao.status === 'INDEFERIDA_PROFESSOR') {
                 Indeferida pelo professor
+            }
+            @if (solicitacao.status === 'APROVADA') {
+                Solicitação aprovada
+            }   
+
+            @if (solicitacao.status === 'NEGADA_NUARTE') {
+                Solicitação negada pelo NUARTE
+            }
+
+            @if (solicitacao.status === 'EMPRESTADA') {
+                Itens retirados
+            }
+
+            @if (solicitacao.status === 'FINALIZADA') {
+                Solicitação finalizada
             }
             </span>
 
@@ -75,6 +94,19 @@
                     <p>
                         {{ solicitacao.observacaoProfessor }}
                     </p>
+                </div>
+            }
+
+            @if (
+            solicitacao.status === 'NEGADA_NUARTE'
+            && solicitacao.observacaoNuarte
+            ) {
+                <div class="observacao">
+                    <strong>Motivo do indeferimento do NUARTE:</strong>
+                    <p>
+                        {{ solicitacao.observacaoNuarte }}
+                    </p>
+
                 </div>
             }
           </div>

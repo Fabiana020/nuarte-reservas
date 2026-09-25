@@ -7,6 +7,8 @@ import { MinhasSolicitacoes } from './pages/minhas-solicitacoes/minhas-solicitac
 import { Perfil } from './pages/perfil/perfil';
 import { NovaSolicitacao } from './pages/nova-solicitacao/nova-solicitacao';
 import { SolicitacoesProfessor } from './pages/solicitacoes-professor/solicitacoes-professor';
+import { SolicitacoesNuarte } from './pages/solicitacoes-nuarte/solicitacoes-nuarte';
+import { EmprestimosNuarte } from './pages/emprestimos-nuarte/emprestimos-nuarte';
 
 export const routes: Routes = [
   {
@@ -41,6 +43,14 @@ export const routes: Routes = [
   {
     path: 'professor/solicitacoes',
     component: SolicitacoesProfessor
+  },
+  {
+    path: 'nuarte/solicitacoes',
+    component: SolicitacoesNuarte
+  },
+  {
+    path: 'nuarte/emprestimos',
+    component: EmprestimosNuarte
   },
   {
     path: '**',

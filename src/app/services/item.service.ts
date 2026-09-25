@@ -6,7 +6,9 @@ import { Item } from '../models/item';
 })
 export class ItemService {
 
-  private itens: Item[] = [
+  private chave = 'itensCatalogo';
+
+  private itensIniciais: Item[] = [
     {
       id: 1,
       nome: 'Vestido vermelho',
@@ -15,16 +17,14 @@ export class ItemService {
       imagem: 'https://placehold.co/400x500',
       status: 'DISPONIVEL'
     },
-
     {
       id: 2,
       nome: 'Chapéu preto',
-      descricao: 'Chapéu preto de tecido.',
+      descricao: 'Chapéu preto para composição de figurinos.',
       categoria: 'Acessórios',
       imagem: 'https://placehold.co/400x500',
       status: 'RESERVADO'
     },
-
     {
       id: 3,
       nome: 'Bengala cenográfica',
@@ -35,11 +35,55 @@ export class ItemService {
     }
   ];
 
+  private itens: Item[] = this.carregarItens();
+
   listar(): Item[] {
     return this.itens;
   }
 
   buscarPorId(id: number): Item | undefined {
-    return this.itens.find(item => item.id === id);
+    return this.itens.find(
+      item => item.id === id
+    );
+  }
+
+  alterarStatus(
+    id: number,
+    status: Item['status']
+  ): void {
+
+    const item = this.itens.find(
+      item => item.id === id
+    );
+
+    if (item) {
+      item.status = status;
+      this.salvarItens();
+    }
+  }
+
+  private salvarItens(): void {
+    localStorage.setItem(
+      this.chave,
+      JSON.stringify(this.itens)
+    );
+  }
+
+  private carregarItens(): Item[] {
+
+    const dados = localStorage.getItem(
+      this.chave
+    );
+
+    if (dados) {
+      return JSON.parse(dados);
+    }
+
+    localStorage.setItem(
+      this.chave,
+      JSON.stringify(this.itensIniciais)
+    );
+
+    return [...this.itensIniciais];
   }
 }
