@@ -1,9 +1,23 @@
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
+import { Solicitacao } from '../../models/solicitacao';
+import { SolicitacaoService } from '../../services/solicitacao.service';
 
 @Component({
-  imports: [],
   selector: 'app-minhas-solicitacoes',
-  styleUrl: './minhas-solicitacoes.css',
+  imports: [DatePipe],
   templateUrl: './minhas-solicitacoes.html',
+  styleUrl: './minhas-solicitacoes.css'
 })
-export class MinhasSolicitacoes {}
+export class MinhasSolicitacoes {
+
+  solicitacoes: Solicitacao[] = [];
+
+  constructor(
+    private solicitacaoService: SolicitacaoService
+  ) {
+    this.solicitacoes =
+      this.solicitacaoService.listarSolicitacoes();
+  }
+}

@@ -1,1 +1,114 @@
-<p>minhas-solicitacoes works!</p>
+<section class="minhas-solicitacoes">
+
+  <div class="topo">
+    <h1>Minhas solicitações</h1>
+    <p>
+      Acompanhe as solicitações realizadas ao NUARTE.
+    </p>
+  </div>
+
+  @if (solicitacoes.length === 0) {
+
+    <div class="vazio">
+      <p>Você ainda não realizou nenhuma solicitação.</p>
+    </div>
+
+  } @else {
+
+    <div class="lista">
+
+      @for (solicitacao of solicitacoes; track solicitacao.id; let i = $index) {
+
+        <article class="solicitacao-card">
+
+          <div class="cabecalho">
+
+            <div>
+              <span class="numero">
+                Solicitação #{{ (i + 1).toString().padStart(4, '0') }}
+              </span>
+
+              <h2>
+                {{ solicitacao.finalidade }}
+              </h2>
+            </div>
+
+            <span
+            class="status"
+            [class.aguardando-professor]="solicitacao.status === 'AGUARDANDO_PROFESSOR'"
+            [class.aguardando-nuarte]="solicitacao.status === 'AGUARDANDO_NUARTE'"
+            [class.indeferida]="solicitacao.status === 'INDEFERIDA_PROFESSOR'"
+            >
+            @if (solicitacao.status === 'AGUARDANDO_PROFESSOR') {
+                Aguardando professor
+            }
+            
+            @if (solicitacao.status === 'AGUARDANDO_NUARTE') {
+                Aguardando análise do NUARTE
+            }
+            
+            @if (solicitacao.status === 'INDEFERIDA_PROFESSOR') {
+                Indeferida pelo professor
+            }
+            </span>
+
+        </div>
+
+          <div class="dados">
+
+            <p>
+              <strong>Professor responsável:</strong>
+              {{ solicitacao.professor }}
+            </p>
+
+            <p>
+              <strong>Data:</strong>
+              {{ solicitacao.dataSolicitacao | date:'dd/MM/yyyy \'às\' HH:mm' }}
+            </p>
+
+            @if (
+            solicitacao.status === 'INDEFERIDA_PROFESSOR'
+            && solicitacao.observacaoProfessor
+            ) {
+                <div class="observacao">
+                    <strong>Motivo do indeferimento:</strong>
+                    <p>
+                        {{ solicitacao.observacaoProfessor }}
+                    </p>
+                </div>
+            }
+          </div>
+
+          <div class="itens">
+
+            <h3>Itens solicitados</h3>
+
+            @for (item of solicitacao.itens; track item.id) {
+
+              <div class="item">
+
+                <img
+                  [src]="item.imagem"
+                  [alt]="item.nome"
+                >
+
+                <div>
+                  <strong>{{ item.nome }}</strong>
+                  <p>{{ item.categoria }}</p>
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  }
+
+</section>

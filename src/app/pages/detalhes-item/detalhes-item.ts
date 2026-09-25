@@ -26,19 +26,8 @@ export class DetalhesItem {
   }
 
   adicionarSolicitacao(): void {
-  console.log('BOTÃO FOI CLICADO');
-
-  console.log('Item atual:', this.item);
-
   if (this.item && this.item.status === 'DISPONIVEL') {
-    console.log('ADICIONANDO:', this.item);
-
     this.solicitacaoService.adicionarItem(this.item);
-
-    console.log(
-      'LISTA DEPOIS:',
-      this.solicitacaoService.listarItens()
-    );
   }
 }
 

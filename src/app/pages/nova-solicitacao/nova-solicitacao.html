@@ -42,30 +42,38 @@
     </div>
 
     <div class="formulario">
+      
+    <label for="finalidade">Finalidade da solicitação</label>
 
-      <label>
-        Finalidade da solicitação
-      </label>
+    <textarea
+    id="finalidade"
+    [(ngModel)]="finalidade"
+    placeholder="Informe para qual atividade os itens serão utilizados"
+    ></textarea>
 
-      <textarea
-        placeholder="Informe para qual atividade os itens serão utilizados">
-      </textarea>
+    <label for="professor">Professor responsável</label>
 
-      <label>
-        Professor responsável
-      </label>
+    <select
+    id="professor"
+    [(ngModel)]="professorSelecionado"
+    >
+    <option value="">
+      Selecione um professor
+    </option>
+    
+    @for (professor of professores; track professor) {
+      <option [value]="professor">
+        {{ professor }}
+      </option>
+    }
+    </select>
 
-      <input
-        type="text"
-        placeholder="Pesquisar professor"
-      >
-
-      <button class="enviar">
-        Enviar solicitação
-      </button>
-
-    </div>
-
+    <button
+    class="enviar"
+    (click)="enviarSolicitacao()"
+    >Enviar solicitação
+    </button>
+  </div>
   }
 
 </section>

@@ -1,0 +1,71 @@
+<section class="solicitacoes-professor">
+
+  <div class="topo">
+    <h1>Solicitações recebidas</h1>
+
+    <p>
+      Analise as solicitações de empréstimo
+      vinculadas a você.
+    </p>
+  </div>
+
+  @if (solicitacoes.length === 0) {
+
+    <p>
+      Não há solicitações aguardando sua análise.
+    </p>
+
+  } @else {
+
+    <div class="lista">
+
+      @for (solicitacao of solicitacoes; track solicitacao.id) {
+
+        <article class="solicitacao-card">
+
+          <h2>
+            {{ solicitacao.finalidade }}
+          </h2>
+
+          <p>
+            <strong>Professor:</strong>
+            {{ solicitacao.professor }}
+          </p>
+
+          <div class="itens">
+
+            <strong>Itens solicitados:</strong>
+
+            @for (item of solicitacao.itens; track item.id) {
+              <p>{{ item.nome }}</p>
+            }
+
+          </div>
+
+          <div class="acoes">
+
+            <button
+              class="deferir"
+              (click)="deferir(solicitacao.id)"
+            >
+              Deferir
+            </button>
+
+            <button
+              class="indeferir"
+              (click)="indeferir(solicitacao.id)"
+            >
+              Indeferir
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  }
+
+</section>
